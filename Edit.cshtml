@@ -1,0 +1,70 @@
+﻿@model KweziHealthESOP.Models.StaffMember
+
+@{
+    ViewData["Title"] = "Edit Staff Member";
+}
+
+<div class="container mt-4">
+
+    <h2>Edit Staff Member</h2>
+
+    <form asp-action="Edit"
+          asp-route-id="@Model.StaffId"
+          method="post">
+
+        <input asp-for="StaffId"
+               type="hidden" />
+
+        <div class="mb-3">
+            <label asp-for="FullName"
+                   class="form-label">
+                Full Name
+            </label>
+
+            <input asp-for="FullName"
+                   class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email"
+                   class="form-label">
+                Email
+            </label>
+
+            <input asp-for="Email"
+                   class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Position"
+                   class="form-label">
+                Position
+            </label>
+
+            <input asp-for="Position"
+                   class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Unit"
+                   class="form-label">
+                Unit
+            </label>
+
+            <input asp-for="Unit"
+                   class="form-control" />
+        </div>
+
+        <button type="submit"
+                class="btn btn-primary">
+            Update Staff Member
+        </button>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Cancel
+        </a>
+
+    </form>
+
+</div>

@@ -1,0 +1,104 @@
+﻿@model IEnumerable<KweziHealthESOP.Models.StaffMember>
+
+@{
+    ViewData["Title"] = "Staff Management";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between
+        align-items-center mb-4">
+
+        <h2>Staff Management</h2>
+
+        <div>
+
+            <a asp-controller="Staff"
+               asp-action="Create"
+               class="btn btn-primary">
+                Add Staff Member
+            </a>
+
+            <form asp-controller="Access"
+                  asp-action="Logout"
+                  method="post"
+                  class="d-inline">
+
+                <button type="submit"
+                        class="btn btn-danger">
+                    Logout
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No staff members have been added yet.
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered
+            table-striped">
+
+            <thead>
+                <tr>
+                    <th>Staff ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Position</th>
+                    <th>Unit</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var staff in Model)
+                {
+                    <tr>
+
+                        <td>@staff.StaffId</td>
+                        <td>@staff.FullName</td>
+                        <td>@staff.Email</td>
+                        <td>@staff.Position</td>
+                        <td>@staff.Unit</td>
+
+                        <td>
+
+                            <a asp-controller="Staff"
+                               asp-action="Edit"
+                               asp-route-id="@staff.StaffId"
+                               class="btn btn-warning btn-sm">
+                                Edit
+                            </a>
+
+                            <form asp-controller="Staff"
+                                  asp-action="Delete"
+                                  asp-route-id="@staff.StaffId"
+                                  method="post"
+                                  class="d-inline">
+
+                                <button type="submit"
+                                        class="btn btn-danger btn-sm">
+                                    Delete
+                                </button>
+
+                            </form>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    }
+
+</div>
